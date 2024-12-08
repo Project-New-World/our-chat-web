@@ -1,14 +1,14 @@
 export class InputLogin {
     constructor({
+        inputId,
         labelText,
         inputText,
         inputType,
-        id,
     }) {
      this.labelText = labelText
      this.inputText = inputText   
      this.inputType = inputType   
-     this.id = id   
+     this.inputId = inputId   
     }
     createInputUserLogin(){
         const input = document.createElement("input")
@@ -17,7 +17,7 @@ export class InputLogin {
         input.setAttribute("required","")
         input.setAttribute("type",this.inputType)
         input.setAttribute("placeholder",this.inputText)
-        input.setAttribute("id",this.id)
+        input.setAttribute("id",this.inputId)
         
         const label = document.createElement("label")
         label.classList.add("input-user-label")
