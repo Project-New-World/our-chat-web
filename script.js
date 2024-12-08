@@ -1,4 +1,6 @@
-import { InputLogin } from "./components/inputs/basic-input.js"
+import { ButtonLogin } from "./components/buttons/button-login.js"
+import { InputLogin } from "./components/inputs/input-login.js"
+import { environment, prefix } from "./config.js"
 
 function placeInputLogin(parameters) {
     const article = document.getElementById("boxLogin")
@@ -6,17 +8,27 @@ function placeInputLogin(parameters) {
     article.appendChild(div)
 }
 
+function placeButtonLogin(parameters) {
+    const article = document.getElementById("boxLogin")
+    const button = new ButtonLogin(parameters).createButtonLogin()
+    article.appendChild(button)
+}
+
 placeInputLogin({
-    id: "inputEmailLogin",
+    inputId: "inputEmailLogin",
     inputText: "Email",
     inputType: "text",
     labelText: "Email"
 })
 placeInputLogin({
-    id: "inputPasswordLogin",
+    inputId: "inputPasswordLogin",
     inputText: "Password",
     inputType: "password",
     labelText: "Password"
+})
+placeButtonLogin({
+    buttonText: "Login",
+    buttonFunction: login,
 })
 
 async function login() {
@@ -25,13 +37,16 @@ async function login() {
     let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Accept', '/');
-    const response = await fetch("https://ourchat-ii0z.onrender.com/people/login", {
+    const response = await fetch(environment+prefix.people+"/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers:headers
     })
-    const data = await response.json()
-    console.log(data)
+    if (response.ok){
+        const data = await response.json()
+        sessionStorage.setItem("name",data[0].name)
+        window.location = "./main-content/home.html"
+    }
 }
 
 

@@ -1,0 +1,44 @@
+body {
+    height: 970px;
+    width: 100%;
+    border: none;
+    margin: 0;
+}
+
+main {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: rgb(217,223,221);
+    background: linear-gradient(90deg, rgba(217,223,221,1) 0%,rgba(23,151,142,1) 100%);
+}
+
+.section-right {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-left {
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.box-login{
+    display: flex;
+    height: 500px;
+    width: 450px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section article button{
+    margin-top: 20px;
+}
