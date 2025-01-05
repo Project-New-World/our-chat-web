@@ -1,6 +1,16 @@
-import { ButtonLogin } from "./components/buttons/button-login.js"
-import { InputLogin } from "./components/inputs/input-login.js"
 import { environment, prefix } from "./config.js"
+import { AlertError } from "./components/alerts/alert-error.js";
+import { ButtonLogin } from "./components/buttons/button-login.js";
+import { InputLogin } from "./components/inputs/input-login.js";
+
+const body = document.getElementById("body")
+const height = window.innerHeight;
+body.style.height = `${height}px`
+
+function placeCLoader() {
+    const cLoader = document.getElementById("cLoader")
+    cLoader.style.display = "block"
+}
 
 function placeInputLogin(parameters) {
     const article = document.getElementById("boxLogin")
@@ -28,7 +38,7 @@ placeInputLogin({
 })
 placeButtonLogin({
     buttonText: "Login",
-    buttonFunction: login,
+    buttonFunctions: [login,placeCLoader]
 })
 
 async function login() {
@@ -42,10 +52,17 @@ async function login() {
         body: JSON.stringify({ email, password }),
         headers:headers
     })
+    const cLoader = document.getElementById("cLoader")
+    cLoader.style.display = "none"
+    const data = await response.json()
     if (response.ok){
-        const data = await response.json()
         sessionStorage.setItem("name",data[0].name)
         window.location = "./main-content/home.html"
+    }
+    if (response.status == 401){
+        new AlertError({
+            message:data.message
+        }).createAlertError()
     }
 }
 

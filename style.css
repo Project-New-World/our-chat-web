@@ -1,8 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+
+:root {
+    --white-default: rgba(217, 223, 221, 1);
+    --green-default: rgba(23, 151, 142, 1)
+}
+
+* {
+    font-family: "Share Tech Mono", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
-    height: 970px;
     width: 100%;
     border: none;
     margin: 0;
+    overflow: hidden;
 }
 
 main {
@@ -10,8 +24,8 @@ main {
     height: 100%;
     width: 100%;
     border: none;
-    background: rgb(217,223,221);
-    background: linear-gradient(90deg, rgba(217,223,221,1) 0%,rgba(23,151,142,1) 100%);
+    background: rgb(217, 223, 221);
+    background: linear-gradient(90deg, var(--white-default) 0%, var(--green-default) 100%);
 }
 
 .section-right {
@@ -28,7 +42,7 @@ main {
     height: 100%;
 }
 
-.box-login{
+.box-login {
     display: flex;
     height: 500px;
     width: 450px;
@@ -39,6 +53,62 @@ main {
     justify-content: center;
 }
 
-section article button{
-    margin-top: 20px;
+.login-title {
+    font-size: 32px;
+}
+
+.box-login-title {
+    margin-left: 30px;
+}
+
+
+.c-loader {
+    display: none;
+    animation: is-rotating 1s infinite;
+    border: 6px solid var(--white-default);
+    border-radius: 50%;
+    border-top-color: var(--green-default);
+    height: 30px;
+    width: 30px;
+}
+
+.icon-our-chat {
+    width: 100px;
+}
+
+
+
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@media (max-width: 450px) {
+    main {
+        flex-direction: column;
+        background: var(--white-default);
+        background: linear-gradient(180deg, var(--white-default) 0%, var(--green-default) 100%);
+    }
+
+    .home-our-chat {
+        height: 75%;
+    }
+
+    .section-left {
+        width: 100%;
+        height: 25%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .section-right {
+        width: 100%;
+        height: 75%;
+    }
+
+    .box-login {
+        width: 80%;
+        height: 80%;
+    }
 }
