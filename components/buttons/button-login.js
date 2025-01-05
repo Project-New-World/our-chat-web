@@ -21,7 +21,7 @@ export class ButtonLogin {
         divButton.style.alignItems = "center"
         divButton.style.textAlign = "center"
         divButton.style.paddingTop = "15px"
-        
+
         button.style.marginLeft = "10%"
         button.style.marginRight = "5%"
 
