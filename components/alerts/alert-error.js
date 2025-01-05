@@ -10,9 +10,9 @@ export class AlertError {
         const body = document.getElementsByTagName("body")[0]
 
         box.classList.add("box-alert")
-        
+
         text.innerText = this.message
-        
+
         box.appendChild(text)
 
         body.appendChild(box)
